@@ -19,6 +19,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Tienda</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
@@ -32,34 +33,43 @@
     <!-- HEADER / NAV  -->
 
     <!-- LOGIN SPLIT -->
-    <div class="container-fluid vh-100">
-      <div class="row h-100">
+            <div class="container-fluid vh-100">
+        <div class="row h-100">
 
-          <!-- IZQUIERDA -->
-          <div class="col-md-6 left-panel d-flex flex-column justify-content-center align-items-center">
-              <h2>TITULO </h2>
-              <p>SUBTITULO</p>
-          </div>
+            <!-- IZQUIERDA (FORMULARIO) -->
+            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+            <h3 class="mb-4">Inicia Sesión</h3>
+            <form class="w-75">
+                <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
+                </div>
+                <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+                </div>
+                <button type="submit" class="btn btn-success w-100">Entrar</button>
+                <p class="text-center mt-3">
+                ¿No tienes cuenta? <a href="#">Regístrate</a>
+                </p>
+            </form>
+            </div>
 
-          <!-- DERECHA -->
-          <div class="col-md-6 right-panel d-flex flex-column justify-content-center align-items-center">
-              <div class="w-75">
-                  <h3 class="mb-4">Inicia Sesión</h3>
-                  <form>
-                      <div class="mb-3">
-                          <label for="email" class="form-label">Correo electrónico</label>
-                          <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
-                      </div>
-                      <div class="mb-3">
-                          <label for="password" class="form-label">Contraseña</label>
-                          <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
-                      </div>
-                      <button type="submit" class="btn btn-success w-100">Entrar</button>
-                      <p class="text-center mt-3">
-                          ¿No tienes cuenta? <a href="#">Regístrate</a>
-                      </p>
-                  </form>
-              </div>
+            <!-- DERECHA (IMAGEN COMO FONDO) -->
+            <div class="col-md-6 d-none d-md-block" 
+                style="background: url('img/prueba1.jpg') no-repeat center center; background-size: cover;">
+            </div>
+
+        </div>
+        </div>
+
+
+        
+
+    </div>  
+    </div>
+
+                
           </div>
 
       </div>  

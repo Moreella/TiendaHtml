@@ -17,7 +17,7 @@ header {
 }
 
 .navbar .navbar-brand:hover {
-    color: #27ae60; /* verde oscuro al pasar el mouse */
+    color: #0b1b12; /* verde oscuro al pasar el mouse */
 }
 
 .navbar-nav .nav-link {
@@ -35,7 +35,7 @@ header {
 }
 
 .navbar-toggler-icon {
-    color: #2ecc71;
+    color: #48d483;
 }
 
 
@@ -45,8 +45,8 @@ header {
    PANEL IZQUIERDO
    ============================= */
 .left-panel {
-    background-color: #b02424; /* verde personalizado */
-    color: white;
+    background-color: #ffeeee; /* verde personalizado */
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 50px;
     height: 100%;
@@ -73,7 +73,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f9fa; /* gris claro */
+    background-color: #e2d46d; /* gris claro */
     height: 100%;
 }
 
