@@ -1,0 +1,98 @@
+/* =============================
+   HEADER / NAVBAR
+   ============================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #040101; /* fondo blanco */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra sutil */
+}
+
+.navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #2ecc71; /* verde del sitio */
+}
+
+.navbar .navbar-brand:hover {
+    color: #27ae60; /* verde oscuro al pasar el mouse */
+}
+
+.navbar-nav .nav-link {
+    color: #333333; /* gris oscuro */
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #2ecc71; /* verde al pasar el mouse */
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    color: #2ecc71;
+}
+
+
+
+
+/* =============================
+   PANEL IZQUIERDO
+   ============================= */
+.left-panel {
+    background-color: #b02424; /* verde personalizado */
+    color: white;
+    text-align: center;
+    padding: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-panel h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.left-panel p {
+    font-size: 1.2rem;
+}
+
+/* =============================
+   PANEL DERECHO
+   ============================= */
+.right-panel {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa; /* gris claro */
+    height: 100%;
+}
+
+.right-panel .w-75 {
+    max-width: 400px;
+}
+
+.right-panel h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.right-panel form .form-control {
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.right-panel form .btn {
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+}
