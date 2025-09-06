@@ -96,3 +96,33 @@ header {
     padding: 10px;
     font-weight: bold;
 }
+
+/* =============================
+    BOTON ENTRAR
+    ============================= */
+    .btn-custom {
+  background-color: #b1cd93; 
+  color: #080000be;           
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px;
+  transition: background 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #538f56; /* mAs oscuro al pasar el mouse */
+}
+
+
+/* =============================
+    BOTON GOOGLE
+    ============================= */
+
+
+.btn img {
+    width: 45px; 
+    height: auto; 
+}
+
+

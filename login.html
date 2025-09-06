@@ -4,82 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Login</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/header.css">
+
     <link rel="stylesheet" href="css/login-style.css">
 </head>
 <body>
-
-    <!-- HEADER / NAV -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">TITULO...</a>
+                <a class="navbar-brand" href="index.html">TITULO...</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Tienda</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Cuenta</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="inicio.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tienda.html">Tienda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cuenta.html">Cuenta</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    
-    <!-- HEADER / NAV  -->
 
     <!-- LOGIN SPLIT -->
-            <div class="container-fluid vh-100">
+    <div class="container-fluid vh-100">
         <div class="row h-100">
-
             <!-- IZQUIERDA (FORMULARIO) -->
             <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-            <h3 class="mb-4">Inicia Sesión</h3>
-            <form class="w-75">
-                <div class="mb-3">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
-                </div>
-                <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
-                </div>
-                <button type="submit" class="btn btn-success w-100">Entrar</button>
-                <p class="text-center mt-3">
-                ¿No tienes cuenta? <a href="#">Regístrate</a>
-                </p>
-            </form>
+                <h3 class="mb-4">Inicia Sesión</h3>
+                <form class="w-75">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+                    </div>
+
+                    
+
+                    <div class="d-flex align-items-center my-3">
+                        <hr class="flex-grow-1">
+                        <span class="px-2 text-muted">o</span>
+                        <hr class="flex-grow-1">
+                    </div>
+
+                    <button type="button" class="btn btn-outline-dark w-100 mb-3">
+                        <img src="img/google_logo.jpg" alt="Google" width="18" class="me-2">
+                        Ingresar con Google
+                    </button>
+
+                    <p class="text-center mt-3">
+                        ¿No tienes cuenta? <a href="#">Regístrate</a>
+                    </p>
+                </form>
             </div>
 
             <!-- DERECHA (IMAGEN COMO FONDO) -->
             <div class="col-md-6 d-none d-md-block" 
                 style="background: url('img/prueba1.jpg') no-repeat center center; background-size: cover;">
             </div>
-
         </div>
-        </div>
-
-
-        
-
-    </div>  
     </div>
 
-                
-          </div>
-
-      </div>  
+    <!-- Modal de éxito -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content text-center p-4" style="border-radius: 20px; background: #e0f7fa;">
+                <div class="modal-header border-0 justify-content-center">
+                    <h2 class="modal-title fw-bold text-success">¡Registro Exitoso!</h2>
+                </div>
+                <div class="modal-body">
+                    <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Éxito" width="100" class="mb-3">
+                    <p class="fs-5">Tu usuario ha sido creado correctamente. ¡Bienvenido!</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-success btn-lg px-5" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
- 
 
+    <!-- JS del login -->
+    <script src="js/login.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+   
+  
 </body>
 </html>

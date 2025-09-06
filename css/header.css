@@ -1,0 +1,39 @@
+/* =============================
+   HEADER / NAVBAR
+   ============================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #040101; /* fondo blanco */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra sutil */
+}
+
+.navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #2ecc71; /* verde del sitio */
+}
+
+.navbar .navbar-brand:hover {
+    color: #0b1b12; /* verde oscuro al pasar el mouse */
+}
+
+.navbar-nav .nav-link {
+    color: #333333; /* gris oscuro */
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #2ecc71; /* verde al pasar el mouse */
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    color: #48d483;
+}

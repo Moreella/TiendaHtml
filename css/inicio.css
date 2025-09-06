@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Hero */
+.hero {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("../img/cabeza_inicio.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* Botones hero, productos y newsletter */
+.btn, .product button {
+  display: inline-block;
+  padding: 14px 28px;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: black;          /* Texto negro */
+  background: white;     /* Fondo blanco */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover, .product button:hover {
+  background: #e0e0e0;
+}
+
+/* Sección Promociones / Cards */
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  text-align: center;
+  max-width: 300px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Newsletter / Login */
+.newsletter {
+  background-image: url("../img/cabeza_inicio.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.newsletter a.btn {
+  color: black;
+  background: white;
+}
+
+.newsletter a.btn:hover {
+  background: #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
