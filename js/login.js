@@ -1,40 +1,56 @@
-// Selección de elementos
-const form = document.querySelector("form");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-//traemos los id de html
 
+const form = document.getElementById("loginForm");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
-// Inicializar el modal de Bootstrap
-const successModal = new bootstrap.Modal(document.getElementById("successModal"));
+const domainRegex = /^[\w.-]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
 
-// Función para validar email
-function validarEmail(email) {
-    const regex = /^\S+@\S+\.\S+$/;
-    return regex.test(email);
+function setInvalid(input, msgEl, message) {
+  input.classList.add("is-invalid");
+  if (msgEl) msgEl.textContent = message;
+}
+function clearInvalid(input) {
+  input.classList.remove("is-invalid");
 }
 
-// Manejo del envío del formulario
-form.addEventListener("submit", function(e) {
-    e.preventDefault(); // Evita que se envíe automáticamente
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+  // Limpiar estado previo
+  clearInvalid(email);
+  clearInvalid(password);
 
-    // Validaciones
-    if (email === "" || password === "") {
-        alert("Todos los campos son obligatorios.");
-        return;
-    }
+  let valid = true;
 
-    if (!validarEmail(email)) {
-        alert("Por favor, ingresa un correo válido.");
-        return;
-    }
+  const emailVal = email.value.trim();
+  const passVal = password.value;
 
-    // Si pasa todas las validaciones, mostrar modal de éxito
-    successModal.show();
+  // Validación email
+  if (!emailVal || emailVal.length > 100 || !domainRegex.test(emailVal)) {
+    setInvalid(email, document.getElementById("emailError"),
+      "Correo inválido. Usa @duoc.cl, @profesor.duoc.cl o @gmail.com (máx. 100).");
+    valid = false;
+  }
 
-    // Limpiar campos
-    form.reset();
+  // Validación password
+  if (!passVal || passVal.length < 4 || passVal.length > 10) {
+    setInvalid(password, document.getElementById("passwordError"),
+      "La contraseña debe tener entre 4 y 10 caracteres.");
+    valid = false;
+  }
+
+  if (!valid) return;
+  const modalEl = document.getElementById("successModal");
+  const modal = new bootstrap.Modal(modalEl);
+  modal.show();
+
+  modalEl.addEventListener("hidden.bs.modal", () => {
+    // Redirige al home o a cuenta
+    window.location.href = "index.html";
+  }, { once: true });
+});
+
+// UX: limpiar error al escribir
+[email, password].forEach(inp => {
+  inp.addEventListener("input", () => clearInvalid(inp));
 });

@@ -8,3 +8,6 @@ git push
 
 
 solo ejecute esos 3 comandos 
+
+
+git pull origin main -> trae los cambios desde el main

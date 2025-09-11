@@ -1,0 +1,205 @@
+<!-- carrito.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrito de compras</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <style>
+    .cart-img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; }
+    .qty-input { width: 84px; }
+    .empty-state { text-align:center; padding:48px 0; }
+    .table td, .table th { vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <!-- Header claro reutilizado -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Barra de navegación principal">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Huerto Hogar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="productos.html">Tienda</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="carrito.html">🛒 Carrito</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    <h1 class="h3 mb-4">Carrito de compras</h1>
+
+    <div id="cartContainer"></div>
+
+    <div class="d-flex gap-2 mt-4">
+      <a class="btn btn-outline-secondary" href="productos.html">⬅ Seguir comprando</a>
+      <button id="btnClear" class="btn btn-outline-danger">Vaciar carrito</button>
+      <button id="btnCheckout" class="btn btn-success ms-auto">Finalizar compra</button>
+    </div>
+  </main>
+
+  <footer class="py-4 bg-light mt-5">
+    <div class="container">
+      <small class="text-muted">&copy; 2025 Huerto Hogar — Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script type="module">
+    import { getCart, setQty, removeFromCart, clearCart, getCartDetailed, getTotals } from './js/cart.js';
+
+    // Intentar usar storage.js para obtener productos reales
+    let storage = null;
+    try {
+      storage = await import('./js/storage.js'); // { getProductos, seedIfEmpty }
+    } catch {
+      console.warn('storage.js no encontrado; el carrito mostrará solo códigos.');
+    }
+
+    const fmt = new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 });
+    const cont = document.getElementById('cartContainer');
+
+    function render() {
+      const items = getCartDetailed(storage?.getProductos);
+      if (!items.length) {
+        cont.innerHTML = `
+          <div class="empty-state">
+            <p class="lead mb-3">Tu carrito está vacío.</p>
+            <a class="btn btn-primary" href="productos.html">Ir a la tienda</a>
+          </div>
+        `;
+        updateTotals();
+        return;
+      }
+
+      cont.innerHTML = `
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th class="text-center">Precio</th>
+                <th class="text-center">Stock</th>
+                <th class="text-center">Cantidad</th>
+                <th class="text-end">Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${items.map(it => `
+                <tr data-code="${it.codigo}">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <img class="cart-img" src="${it.imagen || 'img/placeholder.png'}" alt="${it.nombre || it.codigo}" />
+                      <div>
+                        <div class="fw-semibold">${it.nombre || it.codigo}</div>
+                        <small class="text-muted">Código: ${it.codigo}</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-center">${fmt.format(it.precio || 0)}</td>
+                  <td class="text-center">${it.stock ?? '—'}</td>
+                  <td class="text-center">
+                    <input type="number" min="1" step="1"
+                           class="form-control qty-input mx-auto"
+                           value="${it.qty}" data-qty-input />
+                    ${Number.isFinite(it.stock) ? `<div><small class="text-muted">máx: ${it.stock}</small></div>` : ''}
+                  </td>
+                  <td class="text-end fw-semibold">${fmt.format(it.subtotal)}</td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-danger" data-remove>Quitar</button>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="4" class="text-end">Total</th>
+                <th class="text-end" id="cartTotal"></th>
+                <th></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      `;
+
+      updateTotals();
+    }
+
+    function updateTotals() {
+      const { total } = getTotals(storage?.getProductos);
+      const totalEl = document.getElementById('cartTotal');
+      if (totalEl) totalEl.textContent = fmt.format(total);
+    }
+
+    // Delegación de eventos para qty y remove
+    cont.addEventListener('input', (e) => {
+      const input = e.target.closest('[data-qty-input]');
+      if (!input) return;
+      const tr = input.closest('tr');
+      const codigo = tr.getAttribute('data-code');
+
+      let qty = parseInt(input.value, 10);
+      if (!Number.isInteger(qty) || qty < 1) qty = 1;
+
+      // Respetar stock si existe
+      const productos = storage?.getProductos ? storage.getProductos() : [];
+      const prod = productos.find(p => p.codigo === codigo);
+      if (prod && Number.isFinite(prod.stock) && qty > prod.stock) {
+        qty = prod.stock;
+        input.value = prod.stock;
+        alert('Has alcanzado el stock disponible.');
+      }
+
+      setQty(codigo, qty);
+      render();
+    });
+
+    cont.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-remove]');
+      if (!btn) return;
+      const tr = btn.closest('tr');
+      const codigo = tr.getAttribute('data-code');
+      removeFromCart(codigo);
+      render();
+    });
+
+    // Botones generales
+    document.getElementById('btnClear').addEventListener('click', () => {
+      if (confirm('¿Vaciar el carrito?')) {
+        clearCart();
+        render();
+      }
+    });
+
+    document.getElementById('btnCheckout').addEventListener('click', () => {
+      const { total, unidades } = getTotals(storage?.getProductos);
+      if (unidades === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+      }
+      // Aquí podrías redirigir a una página de checkout real
+      alert(`Gracias por tu compra. Total: ${fmt.format(total)} (${unidades} unidad/es).`);
+      // Ejemplo: limpiar luego de “pagar”
+      // clearCart();
+      // render();
+    });
+
+    // Inicialización
+    try { storage?.seedIfEmpty?.(); } catch {}
+    render();
+  </script>
+</body>
+</html>

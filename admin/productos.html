@@ -1,0 +1,56 @@
+<!-- admin/productos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Administrar Productos</title>
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Menú lateral -->
+    <aside class="sidebar" aria-label="Menú de administración">
+      <h2>Admin Panel</h2>
+      <nav>
+        <ul>
+          <li><a href="usuarios.html">👤 Usuarios</a></li>
+          <!-- Mantén el nombre del archivo como productos.html para consistencia -->
+          <li><a href="productos.html" class="active">📦 Productos</a></li>
+          <li><a href="../index.html">↩ Salir</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Contenido -->
+    <main class="content">
+      <header class="content-header">
+        <h1>Productos</h1>
+        <button type="button" class="btn" onclick="location.href='producto-nuevo.html'">➕ Nuevo Producto</button>
+      </header>
+
+      <table class="tabla" aria-describedby="tabla-productos-caption">
+        <caption id="tabla-productos-caption" style="display:none;">
+          Listado de productos administrables
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-productos">
+          <!-- Filas insertadas por JS -->
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <!-- Cargar como módulo para permitir imports en productos.js -->
+  <script type="module" src="js/productos.js"></script>
+</body>
+</html>
