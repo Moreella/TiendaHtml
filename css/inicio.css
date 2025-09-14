@@ -1,7 +1,7 @@
 /* Base */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #333;
 }
 
@@ -20,6 +20,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   color: #fff;
+
+  border-radius: 20px;   /* 🔹 Bordes redondeados */
+  margin: 0 2rem;        /* 🔹 Margen a los lados (izq/der) */
+  padding: 2rem;         /* 🔹 Espacio interno para el contenido */
+  overflow: hidden;      /* 🔹 Asegura que la imagen no sobresalga de los bordes */
+  margin-top: 70px; /* Ajusta según la altura real del navbar */
 }
 
 /* Overlay para mejorar contraste del texto en la imagen */
@@ -54,18 +60,24 @@ body {
   padding: 14px 28px;
   margin-top: 10px;
   font-size: 1.05rem;
-  font-weight: bold;
+  font-weight: 600;
   color: #000;          /* Texto negro */
-  background: #fff;     /* Fondo blanco */
-  border: none;
+  background: rgba(255, 255, 255, 0.4); /* blanco con 60% de opacidad */
+  color: #fff; 
   border-radius: 6px;
   cursor: pointer;
   transition: background .2s ease, transform .2s ease;
+  outline: none; /* elimina el borde azul de foco */
+  border: none;  /* si quieres asegurarte que no haya borde */
+
+  backdrop-filter: blur(5px);
+
 }
 .hero .btn:hover,
 .newsletter .btn:hover,
 .product button:hover {
-  background: #e0e0e0;
+  color: #fff;
+  background:  rgba(255, 255, 255, 0.6);
   transform: translateY(-1px);
 }
 
@@ -88,6 +100,17 @@ body {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 15px;
+}
+
+.card-img-top {
+  width: 100%;        /* que ocupe todo el ancho de la card */
+  height: 250px;      /* altura fija (ajústala a tu gusto) */
+  object-fit: cover;  /* recorta la imagen para que llene el área sin deformarse */
+}
+
+
+.lead.mb-4 {
+    font-weight: 500;
 }
 
 /* Newsletter / Login */

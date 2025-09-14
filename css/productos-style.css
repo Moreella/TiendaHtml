@@ -61,6 +61,12 @@ button:hover {
     background-color: #218838;
 }
 
+.card-img-top {
+  width: 100%;        /* que ocupe todo el ancho de la card */
+  height: 250px;      /* altura fija (ajústala a tu gusto) */
+  object-fit: cover;  /* recorta la imagen para que llene el área sin deformarse */
+}
+
 #cart {
     position: fixed;
     top: 10px;

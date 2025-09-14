@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Huerto Hogar</title>
+  <!--Tipografía Montserrat-->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="css/inicio.css" />
   <link rel="stylesheet" href="css/header.css" />
@@ -14,9 +16,9 @@
 
   <!-- Header -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light" aria-label="Barra de navegación principal">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Barra de navegación principal">
       <div class="container-fluid">
-        <a class="navbar-brand fw-bold" href="index.html">Huerto Hogar</a>
+        <a class="navbar-brand" href="index.html">Huerto Hogar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú">
           <span class="navbar-toggler-icon"></span>
@@ -24,12 +26,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <!-- Si decides conservar "Inicio" como ítem del menú, que apunte al home -->
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
-            <li class="nav-item"><a class="nav-link" href="productos.html">Tienda</a></li>
-            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-            <li class="nav-item"><a class="nav-link" href="login.html">Cuenta</a></li>
-            <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">INICIO</a></li>
+            <li class="nav-item"><a class="nav-link" href="nosotros.html">NOSOTROS</a></li>
+            <li class="nav-item"><a class="nav-link" href="productos.html">TIENDA</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">CONTACTO</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">CUENTA</a></li>
+            <li class="nav-item"><a class="nav-link" href="blogs.html">BLOGS</a></li>
 
           </ul>
         </div>
@@ -53,20 +55,20 @@
       <div class="row g-4">
         <article class="col-12 col-md-6">
           <div class="card h-100">
-            <img src="img/papas.jpg" class="card-img-top" alt="Promociones 2x1" />
+            <img src="img/temporada.jpg" class="card-img-top" alt="Promociones 2x1" />
             <div class="card-body">
-              <h2 class="h5 card-title">Promociones</h2>
-              <p class="card-text">Aprovecha las ofertas 2x1</p>
+              <h2 class="h5 card-title">Productos de temporada</h2>
+              <p class="card-text">Frutas, verduras y más de esta estación</p>
               <a class="btn btn-secondary" href="#">Ir</a>
             </div>
           </div>
         </article>
         <article class="col-12 col-md-6">
           <div class="card h-100">
-            <img src="img/papas.jpg" class="card-img-top" alt="Descuentos especiales" />
+            <img src="img/otros.jpg" class="card-img-top" alt="Descuentos especiales" />
             <div class="card-body">
-              <h2 class="h5 card-title">Descuentos</h2>
-              <p class="card-text">Descuentos increíbles</p>
+              <h2 class="h5 card-title">Para tus cultivos</h2>
+              <p class="card-text">Vitaminas, fertilizantes y más</p>
               <a class="btn btn-secondary" href="#">Ir</a>
             </div>
           </div>
@@ -76,7 +78,7 @@
 
     <!-- Destacados (opcionalmente cargados desde storage.js) -->
     <section class="container my-5">
-      <h2 class="h4 mb-3">Destacados</h2>
+      <h2 class="h4 mb-3">Más vendidos</h2>
       <div id="grid-destacados" class="row g-4"></div>
     </section>
   </main>
